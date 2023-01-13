@@ -32,7 +32,7 @@ class UserTableSeeder extends Seeder
                 'username' => 'enjel',
                 'email' => 'enjel@gmail.com',
                 'jabatan_id' => 2,
-                'hak_akses' => 'Keuangan',
+                'hak_akses' => 'Bendahara',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
