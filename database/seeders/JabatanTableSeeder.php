@@ -23,7 +23,7 @@ class JabatanTableSeeder extends Seeder
                 'updated_at' => new \DateTime
             ],
             [
-                'nama_jabatan' => 'Keuangan',
+                'nama_jabatan' => 'Bendahara',
                 'aktif' => 1,
                 'created_at' => new \DateTime,
                 'updated_at' => new \DateTime

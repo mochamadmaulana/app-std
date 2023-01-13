@@ -16,19 +16,19 @@ class SatuanBarangTableSeeder extends Seeder
     {
         $satuan_barang = [
                 [
-                    'nama_satuan' => 'Karung Kg',
+                    'nama_satuan' => 'Kg/Karung',
                     'quantity' => 50,
                     'created_at' => new \DateTime,
                     'updated_at' => new \DateTime
                 ],
                 [
-                    'nama_satuan' => 'Karung Kg',
+                    'nama_satuan' => 'Kg/Karung',
                     'quantity' => 20,
                     'created_at' => new \DateTime,
                     'updated_at' => new \DateTime
                 ],
                 [
-                    'nama_satuan' => 'Karung Kg',
+                    'nama_satuan' => 'Kg/Karung',
                     'quantity' => 10,
                     'created_at' => new \DateTime,
                     'updated_at' => new \DateTime

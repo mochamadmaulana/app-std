@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username', 25)->unique();
             $table->string('email')->unique();
             $table->foreignId('jabatan_id');
-            $table->enum('hak_akses', ['Administrator', 'Keuangan', 'Pembukuan', 'Sales', 'Manajer', 'Owner', 'User']);
+            $table->enum('hak_akses', ['Administrator', 'Bendahara', 'Pembukuan', 'Sales', 'Manajer', 'Owner', 'User']);
             $table->tinyInteger('aktif');
             $table->string('avatar');
             $table->text('alamat_user')->nullable();
