@@ -27,7 +27,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <h4><a href="#">Portal <b>STD</b></a></h4>
+            <h4><a href="#"><b>PT.</b> Sinar Timur Darmawan</a></h4>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -61,11 +61,11 @@
                     </div>
                 </form>
 
-                <div class="text-center mt-3">
+                {{-- <div class="text-center mt-3">
                     <p class="mb-1">
                         <a href="forgot-password.html">Lupa password...</a>
                     </p>
-                </div>
+                </div> --}}
             </div>
             <!-- /.login-card-body -->
         </div>

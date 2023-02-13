@@ -21,7 +21,7 @@ class User extends Authenticatable
         'nama_lengkap',
         'username',
         'email',
-        'jabatan_id',
+        'jabatan_pegawai_id',
         'hak_akses',
         'avatar',
         'aktif',
@@ -48,9 +48,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function jabatan()
+    public function jabatan_pegawai()
     {
-        return $this->belongsTo(Jabatan::class);
+        return $this->belongsTo(JabatanPegawai::class);
     }
 
     public function barang_masuk()

@@ -14,7 +14,7 @@ class BarangMasuk extends Model
         'supplier_id',
         'satuan_barang_id',
         'quantity',
-        'harga_beli',
+        'harga_beli_perkilo',
         'harga_total',
         'user_id',
     ];

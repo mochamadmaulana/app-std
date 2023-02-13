@@ -1,15 +1,15 @@
-@extends('layout.main-inventory', ['title' => 'Data Supplier'])
+@extends('layout.main-inventory', ['title' => 'Data Barang Keluar'])
 
 @section('header')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm">
-                    <h1 class="m-0">List Supplier</h1>
+                    <h1 class="m-0">List Barang Keluar</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Data Supplier</li>
+                        <li class="breadcrumb-item active">Data Barang Keluar</li>
                     </ol>
                 </div>
             </div>
@@ -20,45 +20,41 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('inventory.supplier.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Supplier</a>
+            <a href="{{ route('inventory.barang-keluar.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Barang Keluar</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="datasupplier" class="table table-bordered table-hover text-center">
+            <table id="dataBarangMasuk" class="table table-bordered table-hover text-center">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nama Supplier</th>
-                        <th>Telephone</th>
-                        <th>Alamat</th>
-                        <th>Deskripsi</th>
-                        <th>Aktif</th>
+                        <th>Quantity</th>
+                        <th>Nama Barang</th>
+                        <th>Satuan</th>
+                        <th>Harga Beli/Kg</th>
+                        <th>Harga Total</th>
+                        <th>Supplier</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($supplier as $key => $value)
+                    @foreach ($barang_masuk as $key => $value)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ $value->nama_supplier }}</td>
-                            <td>{{ $value->telephone_supplier }}</td>
-                            <td>{{ $value->alamat_supplier }}</td>
-                            <td>@if(empty($value->desc_supplier)) <small class="text-gray-500"><i>Tidak ada data</i></small> @else {{ $value->desc_supplier }} @endif</td>
+                            <td>{{ $value->quantity }}</td>
+                            <td>{{ $value->nama_barang }}</td>
+                            <td>{{ $value->satuan_barang->quantity.' '.$value->satuan_barang->nama_satuan }}</td>
+                            <td>Rp. {{ number_format($value->harga_beli_perkilo) }}</td>
+                            <td>Rp. {{ number_format($value->harga_total) }}</td>
+                            <td>{{ $value->supplier->nama_supplier }}</td>
                             <td>
-                                @if ($value->aktif == 1)
-                                    <span class="badge badge-sm badge-pill badge-success">Aktif</span>
-                                @else
-                                    <span class="badge badge-sm badge-pill badge-danger">Tidak Aktif</span>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('inventory.supplier.edit', $value->id) }}" class="btn btn-sm btn-success mr-2 shadow-sm"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('inventory.barang-keluar.edit', $value->id) }}" class="btn btn-sm btn-success mr-2 shadow-sm"><i class="fas fa-edit"></i></a>
 
                                 <!-- Delete cara pertama -->
-                                {{-- <a href="{{ route('inventory.supplier.destroy', $value->id) }}" class="btn btn-sm btn-danger mr-2 shadow-sm" id="btn-hapus" title="Hapus"><i class="fas fa-trash-alt"></i></a> --}}
+                                {{-- <a href="{{ route('inventory.Barang Masuk.destroy', $value->id) }}" class="btn btn-sm btn-danger mr-2 shadow-sm" id="btn-hapus" title="Hapus"><i class="fas fa-trash-alt"></i></a> --}}
 
                                 <!-- Delete cara kedua -->
-                                <form action="{{ route('inventory.supplier.destroy', $value->id) }}" method="POST" style="display:inline">
+                                <form action="{{ route('inventory.barang-keluar.destroy', $value->id) }}" method="POST" style="display:inline">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-sm btn-danger shadow-sm" id="btn-hapus"><i class="fas fa-trash-alt"></i></button>
@@ -96,7 +92,7 @@
 
             //     Swal.fire({
             //         title: 'Apakah kamu yakin?',
-            //         text: 'Data supplier akan dihapus!',
+            //         text: 'Data Barang Masuk akan dihapus!',
             //         icon: 'warning',
             //         showCancelButton: true,
             //         confirmButtonColor: '#3085d6',
@@ -110,7 +106,7 @@
             //     })
             // })
 
-            $('#datasupplier').DataTable({
+            $('#dataBarangMasuk').DataTable({
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,

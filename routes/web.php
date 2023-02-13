@@ -8,19 +8,32 @@ Route::middleware('guest')->group(function (){
 });
 
 Route::middleware('auth')->group(function (){
-    Route::get('service-menu', [\App\Http\Controllers\ServiceMenuController::class, 'index'])->name('service.menu');
 
-    Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+    Route::get('beranda', \App\Http\Controllers\BerandaController::class)->name('beranda.index');
 
-    Route::prefix('inventory')->name('inventory.')->group(function () {
-        Route::get('dashboard', \App\Http\Controllers\Inventory\DashboardController::class)->name('dashboard');
-        Route::resource('supplier', \App\Http\Controllers\Inventory\SupplierController::class);
-        Route::resource('barang-masuk', \App\Http\Controllers\Inventory\BarangMasukController::class);
-        Route::resource('satuan-barang', \App\Http\Controllers\Inventory\SatuanBarangController::class);
+    Route::get('logout', \App\Http\Controllers\LogoutController::class)->name('logout');
+
+    Route::prefix('data-master')->name('data-master.')->group(function () {
+        Route::resource('satuan-produk', \App\Http\Controllers\DataMaster\SatuanProdukController::class);
+        Route::resource('kategori-produk', \App\Http\Controllers\DataMaster\KategoriProdukController::class);
+        Route::resource('bank', \App\Http\Controllers\DataMaster\BankController::class);
+        Route::resource('termin', \App\Http\Controllers\DataMaster\TerminController::class);
+        Route::resource('role', \App\Http\Controllers\DataMaster\RoleController::class);
+        Route::resource('jabatan-pegawai', \App\Http\Controllers\DataMaster\JabatanPegawaiController::class);
     });
 
+    Route::resource('rekening-bank', \App\Http\Controllers\RekeningBankController::class);
+
+    Route::resource('pembelian', \App\Http\Controllers\PembelianController::class);
+
+    Route::resource('pegawai', \App\Http\Controllers\PegawaiController::class);
+
+    Route::resource('pemasok', \App\Http\Controllers\PemasokController::class);
+
+    Route::resource('produk', \App\Http\Controllers\ProdukController::class);
+
     Route::prefix('pengaturan')->name('pengaturan.')->group(function () {
-        Route::get('dashboard', \App\Http\Controllers\Pengaturan\DashboardController ::class)->name('dashboard');
+        Route::resource('akses-pengguna', \App\Http\Controllers\AksesController::class);
         Route::resource('karyawan', \App\Http\Controllers\Pengaturan\KaryawanController::class);
         Route::resource('jabatan', \App\Http\Controllers\Pengaturan\JabatanController::class)->except('show');
     });
