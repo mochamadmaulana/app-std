@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             KategoriProdukTableSeeder::class,
             BankTableSeeder::class,
             TerminTableSeeder::class,
+            PermissionTableSeeder::class,
         ]);
     }
 }

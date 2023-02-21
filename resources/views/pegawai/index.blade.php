@@ -30,6 +30,7 @@
                         <th>Panggilan</th>
                         <th>username</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -40,6 +41,15 @@
                             <td>{{ $val->panggilan }}</td>
                             <td>{{ $val->username }}</td>
                             <td>{{ $val->email }}</td>
+                            <td>
+                                @if($val->roles->count() >=1)
+                                    @foreach($val->roles->pluck('name') as $p)
+                                        <span class="badge badge-secondary">{{ $p }}</span>
+                                    @endforeach
+                                @else
+                                    <span class="text-muted font-italic text-sm">Null</span>
+                                @endif
+                            </td>
                             <td>
                             @if(Auth::user()->username != $val->username)
                                 <a href="#" class="btn btn-xs btn-info mr-2 shadow-sm" title="Detail"><i class="fas fa-eye"></i> Detail</a>

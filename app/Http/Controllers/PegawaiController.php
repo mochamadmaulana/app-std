@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\JabatanUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class PegawaiController extends Controller
 {
@@ -28,7 +30,8 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        return view('pegawai.create');
+        $role = Role::orderBy('id','DESC')->get();
+        return view('pegawai.create',compact('role'));
     }
 
     /**
