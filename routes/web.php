@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function (){
         Route::resource('bank', \App\Http\Controllers\DataMaster\BankController::class);
         Route::resource('termin', \App\Http\Controllers\DataMaster\TerminController::class);
         Route::resource('role', \App\Http\Controllers\DataMaster\RoleController::class);
+        Route::resource('akses', \App\Http\Controllers\DataMaster\AksesController::class);
         Route::resource('jabatan-pegawai', \App\Http\Controllers\DataMaster\JabatanPegawaiController::class);
     });
 
@@ -33,8 +34,6 @@ Route::middleware('auth')->group(function (){
     Route::resource('produk', \App\Http\Controllers\ProdukController::class);
 
     Route::prefix('pengaturan')->name('pengaturan.')->group(function () {
-        Route::resource('akses-pengguna', \App\Http\Controllers\AksesController::class);
-        Route::resource('karyawan', \App\Http\Controllers\Pengaturan\KaryawanController::class);
-        Route::resource('jabatan', \App\Http\Controllers\Pengaturan\JabatanController::class)->except('show');
+        Route::resource('role-akses', \App\Http\Controllers\Pengaturan\RoleAksesController::class);
     });
 });

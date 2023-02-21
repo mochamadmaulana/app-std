@@ -26,23 +26,22 @@
             <table id="dataPegawai" class="table table-bordered table-hover">
                 <thead class="table-secondary">
                     <tr>
-                        <th>Nama Lengkap</th>
+                        <th>Nama</th>
+                        <th>Panggilan</th>
                         <th>username</th>
                         <th>Email</th>
-                        <th>Jabatan</th>
-                        <th>Hak Akses</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($pegawai as $val)
                         <tr>
-                            <td>{{ $val->nama_lengkap }}</td>
+                            <td>{{ $val->nama }}</td>
+                            <td>{{ $val->panggilan }}</td>
                             <td>{{ $val->username }}</td>
                             <td>{{ $val->email }}</td>
-                            <td>{{ $val->jabatan->nama_jabatan }}</td>
-                            <td><span class="badge badge-sm badge-secondary">{{ $val->hak_akses }}</span></td>
                             <td>
+                            @if(Auth::user()->username != $val->username)
                                 <a href="#" class="btn btn-xs btn-info mr-2 shadow-sm" title="Detail"><i class="fas fa-eye"></i> Detail</a>
                                 <a href="{{ route('pegawai.edit', $val->id) }}" class="btn btn-xs btn-success mr-2 shadow-sm"><i class="fas fa-edit"></i> Edit</a>
 
@@ -51,6 +50,7 @@
                                     @method('delete')
                                     <button type="submit" class="btn btn-xs btn-danger shadow-sm" id="btn-hapus"><i class="fas fa-trash-alt"></i> Hapus</button>
                                 </form>
+                            @endif
                             </td>
                         </tr>
                     @endforeach

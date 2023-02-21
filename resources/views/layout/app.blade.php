@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $title ?? '' }} &mdash; App STD</title>
+    <title>{{ $title ?? '' }} &mdash; {{ env('APP_NAME') ?? 'APP STD' }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -38,17 +38,17 @@
     @stack('css')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
             <h4 class="brand-text font-weight-light">APP - <b>STD</b></h4>
-            {{-- <img class="animation__shake" src="{{ asset('assets') }}/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> --}}
+            {{-- <img class="animation__shake" src="{{ asset('assets') }}/img/logo_std-removebg.png" alt="AdminLTELogo" height="60" width="60"> --}}
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand">
+        <nav class="main-header navbar bg-white navbar-expand">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -85,11 +85,11 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary">
             <!-- Brand Logo -->
             <a href="#" class="brand-link text-center">
-                {{-- <img src="{{ asset('assets') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-                <span class="brand-text font-weight-light">APP - <b>STD</b></span>
+                <img src="{{ asset('assets') }}/img/logo_std-removebg.png" alt="AdminLTE Logo" class="brand-image" >
+                <span class="brand-text font-weight-dark">APP - <b>STD</b></span>
             </a>
 
             <!-- Sidebar -->
@@ -99,7 +99,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                         <li class="nav-item">
-                            <a href="{{ route('beranda.index') }}" class="nav-link {{ request()->is('beranda') ? 'active' : '' }}">
+                            <a href="{{ route('beranda.index') }}" class="nav-link {{ Request::is('beranda') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>Beranda</p>
                             </a>
@@ -107,130 +107,107 @@
 
                         <li class="nav-header">Menu</li>
 
-                        <li class="nav-item {{ request()->is('data-master*') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ request()->is('data-master*') ? 'active' : '' }}">
+                        <li class="nav-item {{ Request::is('data-master*') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('data-master*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-server"></i>
                                 <p>Data Master <i class="fas fa-angle-left right"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('data-master.jabatan-pegawai.index') }}" class="nav-link {{ request()->is('data-master/jabatan-pegawai*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    {{-- <a href="{{ route('data-master.jabatan-pegawai.index') }}" class="nav-link {{ Request::is('data-master/jabatan-pegawai*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
                                         <p>Jabatan Pegawai</p>
-                                    </a>
-                                    <a href="{{ route('data-master.kategori-produk.index') }}" class="nav-link {{ request()->is('data-master/kategori-produk*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    </a> --}}
+                                    <a href="{{ route('data-master.kategori-produk.index') }}" class="nav-link {{ Request::is('data-master/kategori-produk*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
                                         <p>Kategori Produk</p>
                                     </a>
-                                    <a href="{{ route('data-master.satuan-produk.index') }}" class="nav-link {{ request()->is('data-master/satuan-produk*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="{{ route('data-master.satuan-produk.index') }}" class="nav-link {{ Request::is('data-master/satuan-produk*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
                                         <p>Satuan Produk</p>
                                     </a>
-                                    <a href="{{ route('data-master.role.index') }}" class="nav-link {{ request()->is('data-master/role*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Role</p>
-                                    </a>
-                                    <a href="{{ route('data-master.termin.index') }}" class="nav-link {{ request()->is('data-master/termin*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="{{ route('data-master.termin.index') }}" class="nav-link {{ Request::is('data-master/termin*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
                                         <p>Termin</p>
                                     </a>
 
-                                    <a href="{{ route('data-master.bank.index') }}" class="nav-link {{ request()->is('data-master/bank*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="{{ route('data-master.bank.index') }}" class="nav-link {{ Request::is('data-master/bank*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
                                         <p>Bank</p>
+                                    </a>
+                                    <a href="{{ route('data-master.role.index') }}" class="nav-link {{ Request::is('data-master/role*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
+                                        <p>Role</p>
+                                    </a>
+                                    <a href="{{ route('data-master.akses.index') }}" class="nav-link {{ Request::is('data-master/skses*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
+                                        <p>Akses</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link {{ request()->is('penjualan*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('penjualan*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-shopping-basket"></i>
                                 <p>Penjualan</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('pembelian.index') }}" class="nav-link {{ request()->is('pembelian*') ? 'active' : '' }}">
+                            <a href="{{ route('pembelian.index') }}" class="nav-link {{ Request::is('pembelian*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-shopping-bag"></i>
                                 <p>Pembelian</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('pemasok.index') }}" class="nav-link {{ request()->is('pemasok*') ? 'active' : '' }}">
+                            <a href="{{ route('pemasok.index') }}" class="nav-link {{ Request::is('pemasok*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-store-alt"></i>
                                 <p>Pemasok</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('produk.index') }}" class="nav-link {{ request()->is('produk*') ? 'active' : '' }}">
+                            <a href="{{ route('produk.index') }}" class="nav-link {{ Request::is('produk*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-box-open"></i>
                                 <p>Produk</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('rekening-bank.index') }}" class="nav-link {{ request()->is('rekening-bank*') ? 'active' : '' }}">
+                            <a href="{{ route('rekening-bank.index') }}" class="nav-link {{ Request::is('rekening-bank*') ? 'active' : '' }}">
                                 <i class="nav-icon far fa-credit-card"></i>
                                 <p>Rekening Bank</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('pegawai.index') }}" class="nav-link {{ request()->is('pegawai*') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.index') }}" class="nav-link {{ Request::is('pegawai*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Pegawai</p>
                             </a>
                         </li>
 
-                        <li class="nav-item {{ request()->is('pengaturan*') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ request()->is('pengaturan*') ? 'active' : '' }}">
+                        <li class="nav-item {{ Request::is('pengaturan*') ? 'menu-open' : '' }} mb-5">
+                            <a href="#" class="nav-link {{ Request::is('pengaturan*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-cogs"></i>
                                 <p>Pengaturan <i class="fas fa-angle-left right"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link {{ request()->is('pengaturan/profil*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="#" class="nav-link {{ Request::is('pengaturan/profil*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
                                         <p>Profile</p>
                                     </a>
-                                    <a href="{{ route('pengaturan.akses-pengguna.index') }}" class="nav-link {{ request()->is('pengaturan/akses-pengguna*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Akses Pengguna</p>
+                                    <a href="{{ route('pengaturan.role-akses.index') }}" class="nav-link {{ Request::is('pengaturan/role-akses*') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon text-warning"></i>
+                                        <p>Role Akses</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                        {{-- <li class="nav-item {{ request()->is('inventory/barang-masuk*') || request()->is('inventory/barang-keluar*')  ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ request()->is('inventory/barang-masuk*') || request()->is('inventory/barang-keluar*')  ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-boxes"></i>
-                                <p>Transaksi Barang <i class="fas fa-angle-left right"></i></p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('inventory.barang-masuk.index') }}" class="nav-link {{ request()->is('inventory/barang-masuk*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Barang Masuk</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('inventory.barang-keluar.index') }}" class="nav-link {{ request()->is('inventory/barang-keluar*') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Barang-keluar</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
-
-                        {{-- <li class="nav-item">
-                            <a href="{{ route('inventory.supplier.index') }}" class="nav-link {{ request()->is('inventory/supplier*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-truck"></i>
-                                <p>Supplier</p>
-                            </a>
-                        </li> --}}
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

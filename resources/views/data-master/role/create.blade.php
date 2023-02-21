@@ -30,9 +30,9 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label>Role <span class="text-danger">*</span></label>
-                            <input type="text" name="role" class="form-control @error('role') is-invalid @enderror" value="{{ @old('role') }}" autofocus>
-                            @error('role')
+                            <label>Nama <span class="text-danger">*</span></label>
+                            <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ @old('nama') }}" autofocus>
+                            @error('nama')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

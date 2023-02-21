@@ -1,11 +1,11 @@
-@extends('layout.app', ['title' => 'Jabatan Pegawai'])
+@extends('layout.app', ['title' => 'Akses'])
 
 @section('header')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm">
-                    <h1 class="m-0"><i class="fas fa-server"></i> Jabatan Pegawai</h1>
+                    <h1 class="m-0"><i class="fas fa-server"></i> Akses</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -20,36 +20,27 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('data-master.jabatan-pegawai.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Jabatan</a>
+            <a href="{{ route('data-master.akses.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Akses</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="dataJabatan" class="table table-bordered table-hover">
-                <thead>
+            <table id="dataAkses" class="table table-bordered table-hover">
+                <thead class="table-secondary">
                     <tr>
                         <th>Nama</th>
-                        <th>Aktif</th>
                         <th style="width:20%">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($jabatan_user as $val)
+                    @foreach ($akses as $val)
                         <tr>
-                            <td>{{ $val->nama }}</td>
+                            <td>{{ $val->name }}</td>
                             <td>
-                                @if ($val->aktif == 1)
-                                    <span class="badge badge-pill badge-success">Aktif</span>
-                                @else
-                                    <span class="badge badge-pill badge-danger">Tidak Aktif</span>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('data-master.jabatan-pegawai.edit', $val->id) }}" class="btn btn-xs btn-success mr-2 shadow-sm"><i class="fas fa-edit"></i> Edit</a>
-
-                                <form action="{{ route('data-master.jabatan-pegawai.destroy', $val->id) }}" method="POST" style="display:inline">
+                                <a href="{{ route('data-master.akses.edit', $val->id) }}" class="btn btn-xs btn-success mr-2 shadow-sm"><i class="fas fa-edit mr-1"></i> Edit</a>
+                                <form action="{{ route('data-master.akses.destroy', $val->id) }}" method="POST" style="display:inline">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-xs btn-danger shadow-sm" onclick="return confirm('Yakin, untuk menghapus jabatan {{ $val->nama }}?')"><i class="fas fa-trash-alt"></i> Hapus</button>
+                                    <button type="submit" class="btn btn-xs btn-danger shadow-sm border-0" onclick="return confirm('Yakin untuk menghapus role {{ $val->name }}?')"><i class="fas fa-trash-alt mr-1"></i> Hapus</button>
                                 </form>
                             </td>
                         </tr>
@@ -64,7 +55,7 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            $('#dataJabatan').DataTable({
+            $('#dataAkses').DataTable({
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,

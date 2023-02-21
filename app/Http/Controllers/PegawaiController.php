@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Jabatan;
+use App\Models\JabatanUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +17,7 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $pegawai = User::with('jabatan')->orderBy('id', 'DESC')->get();
+        $pegawai = User::orderBy('id', 'DESC')->get();
         return view('pegawai.index', compact('pegawai'));
     }
 
@@ -28,8 +28,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        $jabatan = Jabatan::all();
-        return view('pegawai.create', compact('jabatan'));
+        return view('pegawai.create');
     }
 
     /**
@@ -44,15 +43,15 @@ class PegawaiController extends Controller
             "nama_lengkap" => ["required", "max:200"],
             "username" => ["required", "max:25", "min:4", "unique:users"],
             "email" => ["required", "unique:users"],
-            "jabatan_id" => ["required"],
+            "jabatan_pegawai" => ["required"],
             "hak_akses" => ["required"],
             "password" => ["required", "confirmed", "min:3"],
         ]);
         User::create([
-            'nama_lengkap' => $request->nama_lengkap,
+            'nama' => $request->nama,
+            'panggilan' => $request->panggilan,
             'username' => strtolower($request->username),
             'email' => strtolower($request->email),
-            'jabatan_id' => $request->jabatan_id,
             'password' => Hash::make($request->password),
             'hak_akses' => $request->hak_akses,
             'avatar' => 'default.jpg',

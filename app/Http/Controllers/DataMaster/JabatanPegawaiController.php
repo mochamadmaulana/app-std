@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\DataMaster;
 
 use App\Http\Controllers\Controller;
-use App\Models\JabatanPegawai;
+use App\Models\JabatanUser;
 use Illuminate\Http\Request;
 
 class JabatanPegawaiController extends Controller
@@ -15,8 +15,8 @@ class JabatanPegawaiController extends Controller
      */
     public function index()
     {
-        $jabatan_pegawai = JabatanPegawai::orderBy("id", "DESC")->get();
-        return view('data-master.jabatan-pegawai.index', compact('jabatan_pegawai'));
+        $jabatan_user = JabatanUser::orderBy("id", "DESC")->get();
+        return view('data-master.jabatan-pegawai.index', compact('jabatan_user'));
     }
 
     /**
@@ -40,7 +40,7 @@ class JabatanPegawaiController extends Controller
         $request->validate([
             "jabatan" => ["required", "max:150", "unique:jabatan_pegawais,nama"],
         ]);
-        JabatanPegawai::create([
+        JabatanUser::create([
             'nama' => $request->jabatan,
             'aktif' => 1
         ]);
@@ -55,8 +55,8 @@ class JabatanPegawaiController extends Controller
      */
     public function edit($id)
     {
-        $jabatan_pegawai = JabatanPegawai::where("id", $id)->first();
-        return view('data-master.jabatan-pegawai.edit', compact('jabatan_pegawai'));
+        $jabatan_user = JabatanUser::where("id", $id)->first();
+        return view('data-master.jabatan-pegawai.edit', compact('jabatan_user'));
     }
 
     /**
@@ -71,7 +71,7 @@ class JabatanPegawaiController extends Controller
         $request->validate([
             "jabatan" => ["required", "max:150"],
         ]);
-        JabatanPegawai::where("id", $id)->update([
+        JabatanUser::where("id", $id)->update([
             'nama' => $request->jabatan,
             'aktif' => $request->aktif
         ]);
@@ -87,9 +87,9 @@ class JabatanPegawaiController extends Controller
     public function destroy($id)
     {
         if ($id) {
-            $jabatan_pegawai = JabatanPegawai::where("id", $id)->first();
-            $jabatan_pegawai->delete();
-            return redirect()->route('data-master.jabatan-pegawai.index')->with("success", "Data jabatan pegawai ".$jabatan_pegawai->nama." berhasil dihapus!");
+            $jabatan_user = JabatanUser::where("id", $id)->first();
+            $jabatan_user->delete();
+            return redirect()->route('data-master.jabatan-pegawai.index')->with("success", "Data jabatan pegawai ".$jabatan_user->nama." berhasil dihapus!");
         }else{
             return redirect()->route('data-master.jabatan-pegawai.index')->with("error", "Data jabatan pegawai tidak ditemukan!");
         }

@@ -16,11 +16,11 @@ class UserTableSeeder extends Seeder
     {
         $user = [
             [
-                'nama_lengkap' => 'Mochamad Maulana',
+                'nama' => 'Mochamad Maulana',
+                'panggilan' => 'Maull',
                 'username' => 'mochamadmaulana',
                 'email' => 'mochamad.maulana@raharja.info',
-                'jabatan_pegawai_id' => 1,
-                'hak_akses' => 'Administrator',
+                'status' => 'Staff',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -28,11 +28,11 @@ class UserTableSeeder extends Seeder
                 'updated_at' => new \DateTime
             ],
             [
-                'nama_lengkap' => 'Enjel',
-                'username' => 'enjel',
-                'email' => 'enjel@gmail.com',
-                'jabatan_pegawai_id' => 2,
-                'hak_akses' => 'Bendahara',
+                'nama' => 'Angel',
+                'panggilan' => 'Angel',
+                'username' => 'angel',
+                'email' => 'angel@example.test',
+                'status' => 'Staff',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -40,11 +40,11 @@ class UserTableSeeder extends Seeder
                 'updated_at' => new \DateTime
             ],
             [
-                'nama_lengkap' => 'Nunu',
+                'nama' => 'Nunu',
+                'panggilan' => 'Nunu',
                 'username' => 'nunu',
-                'email' => 'nunu@gmail.com',
-                'jabatan_pegawai_id' => 3,
-                'hak_akses' => 'Pembukuan',
+                'email' => 'nunu@example.test',
+                'status' => 'Staff',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -52,11 +52,11 @@ class UserTableSeeder extends Seeder
                 'updated_at' => new \DateTime
             ],
             [
-                'nama_lengkap' => 'Arab',
+                'nama' => 'Arab',
+                'panggilan' => 'Arab',
                 'username' => 'arab',
-                'email' => 'arab@gmail.com',
-                'jabatan_pegawai_id' => 4,
-                'hak_akses' => 'Sales',
+                'email' => 'arab@example.test',
+                'status' => 'Staff',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -64,11 +64,11 @@ class UserTableSeeder extends Seeder
                 'updated_at' => new \DateTime
             ],
             [
-                'nama_lengkap' => 'Kawai',
+                'nama' => 'Kawai',
+                'panggilan' => 'Kawai',
                 'username' => 'kawai',
-                'email' => 'kawai@gmail.com',
-                'jabatan_pegawai_id' => 4,
-                'hak_akses' => 'Sales',
+                'email' => 'kawai@example.test',
+                'status' => 'Staff',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -76,11 +76,11 @@ class UserTableSeeder extends Seeder
                 'updated_at' => new \DateTime
             ],
             [
-                'nama_lengkap' => 'Manajer',
-                'username' => 'manajer',
-                'email' => 'manajer@gmail.com',
-                'jabatan_pegawai_id' => 5,
-                'hak_akses' => 'Manajer',
+                'nama' => 'Kevin',
+                'panggilan' => 'Kevin',
+                'username' => 'kevin',
+                'email' => 'kevinr@example.test',
+                'status' => 'Staff',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -88,11 +88,11 @@ class UserTableSeeder extends Seeder
                 'updated_at' => new \DateTime
             ],
             [
-                'nama_lengkap' => 'Edi Darmawan',
-                'username' => 'edidarmawan',
-                'email' => 'edidarmawan@gmail.com',
-                'jabatan_pegawai_id' => 6,
-                'hak_akses' => 'Owner',
+                'nama' => 'Edy Dharmawan',
+                'panggilan' => 'Khode',
+                'username' => 'edydharmawan',
+                'email' => 'edydharmawan@example.test',
+                'status' => 'Staff',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -100,11 +100,47 @@ class UserTableSeeder extends Seeder
                 'updated_at' => new \DateTime
             ],
             [
-                'nama_lengkap' => 'User',
-                'username' => 'user',
-                'email' => 'user@gmail.com',
-                'jabatan_pegawai_id' => 7,
-                'hak_akses' => 'User',
+                'nama' => 'Wawan',
+                'panggilan' => 'Wawan',
+                'username' => 'wawan',
+                'email' => 'wawan@example.test',
+                'status' => 'Staff',
+                'avatar' => 'default.jpg',
+                'aktif' => 1,
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
+            ],
+            [
+                'nama' => 'Dede',
+                'panggilan' => 'Dede',
+                'username' => 'dede',
+                'email' => 'dede@example.test',
+                'status' => 'Staff',
+                'avatar' => 'default.jpg',
+                'aktif' => 1,
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
+            ],
+            [
+                'nama' => 'Ramli',
+                'panggilan' => 'Ramli',
+                'username' => 'ramli',
+                'email' => 'ramli@example.test',
+                'status' => 'Harian Lepas',
+                'avatar' => 'default.jpg',
+                'aktif' => 1,
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'created_at' => new \DateTime,
+                'updated_at' => new \DateTime
+            ],
+            [
+                'nama' => 'Pak RT',
+                'panggilan' => 'Pak RT',
+                'username' => 'parete',
+                'email' => 'parete@example.test',
+                'status' => 'Harian Lepas',
                 'avatar' => 'default.jpg',
                 'aktif' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

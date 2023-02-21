@@ -15,14 +15,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap', 150);
+            $table->string('nama', 150);
+            $table->string('panggilan', 150)->nullable();
             $table->string('username', 25)->unique();
             $table->string('email')->unique();
-            $table->foreignId('jabatan_pegawai_id');
-            $table->enum('hak_akses', ['Administrator', 'Bendahara', 'Pembukuan', 'Sales', 'Manajer', 'Owner', 'User']);
+            $table->enum('status', ['Staff', 'Harian Lepas']);
             $table->tinyInteger('aktif');
             $table->string('avatar');
-            $table->text('alamat_user')->nullable();
+            $table->text('alamat')->nullable();
             $table->string('password');
             $table->timestamps();
         });

@@ -25,14 +25,14 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <form action="{{ route('data-master.jabatan-pegawai.update', $jabatan_pegawai->id) }}" method="POST">
+            <form action="{{ route('data-master.jabatan-pegawai.update', $jabatan_user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>Jabatan <span class="text-danger">*</span></label>
-                            <input type="text" name="jabatan" class="form-control @error('jabatan') is-invalid @enderror" value="{{ $jabatan_pegawai->nama }}" autofocus>
+                            <input type="text" name="jabatan" class="form-control @error('jabatan') is-invalid @enderror" value="{{ $jabatan_user->nama }}" autofocus>
                             @error('jabatan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -41,12 +41,12 @@
                             <label class="form-label">Status <span class="text-danger">*</span></label><br>
                             <div class="form-check form-check-inline">
                                 <input name="aktif" class="form-check-input" type="radio" value="1" id="aktif"
-                                    @if($jabatan_pegawai->aktif == 1) checked @endif/>
+                                    @if($jabatan_user->aktif == 1) checked @endif/>
                                 <label class="form-check-label" for="aktif"> Aktif </label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input name="aktif" class="form-check-input" type="radio" value="0" id="tidakAktif"
-                                    @if($jabatan_pegawai->aktif == 0) checked @endif/>
+                                    @if($jabatan_user->aktif == 0) checked @endif/>
                                 <label class="form-check-label" for="tidakAktif"> Tidak Aktif </label>
                             </div>
                             @error('aktif')

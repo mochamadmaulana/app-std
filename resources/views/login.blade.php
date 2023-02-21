@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Login &mdash; {{ env('APP_NAME') ?? 'Portal STD' }}</title>
+    <title>Login &mdash; {{ env('APP_NAME') ?? 'APP STD' }}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,8 +26,9 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="login-logo">
-            <h4><a href="#"><b>PT.</b> Sinar Timur Darmawan</a></h4>
+        <div class="login-logo text-center">
+            <a href="#"><img src="{{ asset('assets') }}/img/logo_std-removebg.png" alt="AdminLTE Logo" class="brand-image" height="50%" width="50%"></a>
+            {{-- <h4><a href="#"><b>PT.</b> Sinar Timur Darmawan</a></h4> --}}
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -37,7 +38,7 @@
                 <form action="{{ route('login.store') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" name="email_username" class="form-control" placeholder="Username/Email">
+                        <input type="text" name="email_username" class="form-control" placeholder="Username/Email" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>

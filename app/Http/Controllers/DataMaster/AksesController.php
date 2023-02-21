@@ -4,9 +4,9 @@ namespace App\Http\Controllers\DataMaster;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
-class RoleController extends Controller
+class AksesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $role = Role::orderBy('id','DESC')->get();
-        return view('data-master.role.index', compact('role'));
+        $akses = Permission::orderBy('id','DESC')->get();
+        return view('data-master.akses.index', compact('akses'));
     }
 
     /**
@@ -26,7 +26,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('data-master.role.create');
+        return view('data-master.akses.create');
     }
 
     /**
@@ -41,11 +41,11 @@ class RoleController extends Controller
             "nama" => ["required", "max:30", "unique:roles,name"],
         ]);
 
-        Role::create([
+        Permission::create([
             'name' => $request->nama,
             'guard_name' => 'web',
         ]);
-        return redirect()->route('data-master.role.index')->with("success", "Data role berhasil ditambahkan!");
+        return redirect()->route('data-master.akses.index')->with("success", "Data role berhasil ditambahkan!");
     }
 
     /**
@@ -56,8 +56,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::where("id", $id)->first();
-        return view('data-master.role.edit', compact('role'));
+        $akses = Permission::where("id", $id)->first();
+        return view('data-master.akses.edit', compact('akses'));
     }
 
     /**
@@ -73,10 +73,10 @@ class RoleController extends Controller
             "nama" => ["required", "max:30"],
         ]);
 
-        Role::where('id',$id)->update([
+        Permission::where('id',$id)->update([
             'name' => $request->nama,
         ]);
-        return redirect()->route('data-master.role.index')->with("success", "Data role berhasil diedit!");
+        return redirect()->route('data-master.akses.index')->with("success", "Data role berhasil diedit!");
     }
 
     /**
@@ -88,11 +88,11 @@ class RoleController extends Controller
     public function destroy($id)
     {
         if ($id) {
-            $role = Role::where("id", $id)->first();
-            $role->delete();
-            return redirect()->route('data-master.role.index')->with("success", "Data role ".$role->name." berhasil dihapus!");
+            $akses = Permission::where("id", $id)->first();
+            $akses->delete();
+            return redirect()->route('data-master.akses.index')->with("success", "Data role ".$akses->name." berhasil dihapus!");
         }else{
-            return redirect()->route('data-master.role.index')->with("error", "Data role tidak ditemukan!");
+            return redirect()->route('data-master.akses.index')->with("error", "Data role tidak ditemukan!");
         }
     }
 }

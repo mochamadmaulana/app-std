@@ -16,25 +16,25 @@ class TerminTableSeeder extends Seeder
     {
         $termin = [
             [
-                'nama' => '7 Hari',
+                'nama' => '1 Minggu',
                 'lama_hari' => 7,
                 'created_at' => new \DateTime,
                 'updated_at' => new \DateTime
             ],
             [
-                'nama' => '14 Hari',
+                'nama' => '2 Minggu',
                 'lama_hari' => 14,
                 'created_at' => new \DateTime,
                 'updated_at' => new \DateTime
             ],
             [
-                'nama' => '21 Hari',
+                'nama' => '3 Minggu',
                 'lama_hari' => 21,
                 'created_at' => new \DateTime,
                 'updated_at' => new \DateTime
             ],
             [
-                'nama' => '30 Hari',
+                'nama' => '1 Bulan',
                 'lama_hari' => 30,
                 'created_at' => new \DateTime,
                 'updated_at' => new \DateTime

@@ -17,7 +17,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = User::with('jabatan')->orderBy('id', 'DESC')->get();
+        $karyawan = User::orderBy('id', 'DESC')->get();
         return view('pengaturan.karyawan.index', compact('karyawan'));
     }
 
@@ -28,8 +28,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        $jabatan = Jabatan::all();
-        return view('pengaturan.karyawan.create', compact('jabatan'));
+        return view('pengaturan.karyawan.create');
     }
 
     /**
